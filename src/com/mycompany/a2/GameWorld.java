@@ -1,10 +1,6 @@
 package com.mycompany.a2;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import com.codename1.ui.Component;
 import com.codename1.ui.Form;
@@ -13,10 +9,6 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.geom.Point2D;
-import com.mycompany.a1.gameObjects.Cats;
-import com.mycompany.a1.gameObjects.Dogs;
-import com.mycompany.a1.gameObjects.IMoving;
-import com.mycompany.a1.gameObjects.Nets;
 import com.mycompany.a2.gameObjects.Cats;
 import com.mycompany.a2.gameObjects.Dogs;
 import com.mycompany.a2.gameObjects.IMoving;
@@ -25,7 +17,7 @@ import com.mycompany.a2.gameObjects.Nets;
 /**
  * Created by Edgar on 2/23/2016.
  */
-public class GameWorld extends Form{
+public class GameWorld extends Observable {
     ArrayList<GameObject> GameObjects = new ArrayList();
     Random randomNum = new Random();
     private int dogsCaptured;
@@ -343,33 +335,34 @@ public class GameWorld extends Form{
         System.out.println();
     }
 
-    public void quit() {
-        Label myLabel = new Label("Are you sure you want to quit?");
-        this.addComponent(myLabel);
-        final TextField myTextField = new TextField();
-        this.addComponent(myTextField);
-        this.show();
-
-        myTextField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                String sCommand = myTextField.getText().toString();
-                myTextField.clear();
-
-                //switch statement to handle the user input
-                switch (sCommand.charAt(0)) {
-                    case 'y':
-                        System.exit(0);
-                        break;
-                    case 'n':
-                        break;
-                    default:
-                        System.out.println("\nPlease enter either y or n\n");
-                        break;
-                }
-            }
-        });
-    }
+      //will be reimplemnted elsewhere
+//    public void quit() {
+//        Label myLabel = new Label("Are you sure you want to quit?");
+//        this.addComponent(myLabel);
+//        final TextField myTextField = new TextField();
+//        this.addComponent(myTextField);
+//        this.show();
+//
+//        myTextField.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent evt) {
+//                String sCommand = myTextField.getText().toString();
+//                myTextField.clear();
+//
+//                //switch statement to handle the user input
+//                switch (sCommand.charAt(0)) {
+//                    case 'y':
+//                        System.exit(0);
+//                        break;
+//                    case 'n':
+//                        break;
+//                    default:
+//                        System.out.println("\nPlease enter either y or n\n");
+//                        break;
+//                }
+//            }
+//        });
+//    }
 
     public static int randInt(int min, int max) {
         Random rand = new Random();

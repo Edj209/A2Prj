@@ -1,22 +1,43 @@
 package com.mycompany.a2;
 
+import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BorderLayout;
 import com.sun.glass.ui.SystemClipboard;
+import com.sun.xml.internal.ws.api.server.LazyMOMProvider;
 
 /**
  * Created by Edgar on 2/23/2016.
  */
 public class Game extends Form{
     private GameWorld gw;
+    private MapView mv;
+    private ScoreView sv;
 
     public Game() {
         gw = new GameWorld();
         gw.initLayout();
-        play();
+        mv = new MapView();
+        sv = new ScoreView();
+
+        //gui stuff
+        //title
+        this.setTitle("Dog Catcher");
+        //containers for the 5 regions
+        this.setLayout(new BorderLayout());
+
+        //buttons, add padding and color
+        Button expandButton = new Button("Expand");
+
+        this.addComponent(BorderLayout.WEST, expandButton);
+
+        this.show();
+
+        //play(); //obsolete
     }
 
     private void play() {
@@ -77,7 +98,7 @@ public class Game extends Form{
                         gw.map();
                         break;
                     case 'q':
-                        gw.quit();
+                        //gw.quit();
                         break;
                     default:
                         System.out.println("\n\n please enter valid input\n\n");
